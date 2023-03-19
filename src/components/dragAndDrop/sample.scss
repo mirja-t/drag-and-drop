@@ -1,0 +1,41 @@
+.drag-and-drop {
+    background-size: cover;
+
+    h1, h5 {
+        text-align: center;
+        margin-bottom: 0.35em;
+        color: white;
+        text-shadow: 0 0 50px black;
+    }
+    .drag-and-drop-container {
+        
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: black;
+            outline: 1px solid black;
+        }
+        .drag-item > *,
+        .drop-container {
+            background-color: rgba(0,0,0,0.35);
+        }
+    }
+    // controls
+    .game-control {
+        &.control-prev {
+            button {
+                span {
+                    background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 29.8 12.6' style='enable-background:new 0 0 29.8 12.6;' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M14.9,0c0.3,0,0.6,0.1,0.9,0.3L29,9.5c0.7,0.5,0.8,1.4,0.4,2.1c-0.5,0.7-1.4,0.8-2.1,0.4L14.9,3.3L2.5,12 c-0.7,0.5-1.6,0.3-2.1-0.4c-0.5-0.7-0.3-1.6,0.4-2.1L14,0.3C14.3,0.1,14.6,0,14.9,0z'/%3E%3C/svg%3E");
+                }
+            }
+        }
+        &.control-next {
+            button {
+                span {
+                    background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 29.8 12.6' style='enable-background:new 0 0 29.8 12.6;' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M14.9,12.3c-0.3,0-0.6-0.1-0.9-0.3L0.8,2.7C0.1,2.3-0.1,1.3,0.4,0.6C0.9,0,1.8-0.2,2.5,0.3l12.4,8.7l12.4-8.7 C28-0.2,28.9,0,29.4,0.6c0.5,0.7,0.3,1.6-0.4,2.1L15.7,12C15.5,12.2,15.2,12.3,14.9,12.3z'/%3E%3C/svg%3E");                
+                }
+            }
+        }
+    }
+}

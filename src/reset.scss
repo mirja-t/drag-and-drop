@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    border: none;
+    border-radius: 0;
+    padding: 1em;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+p {
+    margin-bottom: 1em;
+}
+img {
+    max-width: 100%;
+}

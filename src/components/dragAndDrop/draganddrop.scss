@@ -1,0 +1,130 @@
+
+$card-hover-transition: 0.25s;
+$card-hover-transition-delay: 0s;
+$control-width: 35px;
+$control-height: 25px;
+$card-height: 3.5em;
+
+%check {
+    content: '';
+    position: absolute;
+    right: -10px;
+    z-index: 2;
+    top: 10px;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 64 64' style='enable-background:new 0 0 64 64;' xml:space='preserve'%3E%3Cpath fill='black' d='M62.1,37.8c-0.7-1.1-1.4-2.1-2.2-3.1l2.8-2.7l-2.8-2.7c0.8-0.9,1.5-2,2.2-3.1c-1-0.8-2.2-1.5-3.3-2.1l0,0 c0.6-1.1,1.1-2.3,1.6-3.5c-1.2-0.6-2.4-1-3.6-1.4l0,0c0.4-1.2,0.7-2.4,0.9-3.7c-1.3-0.3-2.5-0.6-3.8-0.7l0,0 c0.2-1.2,0.2-2.5,0.2-3.8c-1.3-0.1-2.6-0.1-3.8,0l0,0c-0.1-1.3-0.3-2.5-0.5-3.8C48.5,7.4,47.2,7.6,46,8l0,0 c-0.3-1.2-0.7-2.4-1.2-3.6c-1.2,0.4-2.4,0.9-3.6,1.5l0,0c-0.5-1.2-1.2-2.2-1.9-3.3c-1.2,0.2-2.3,1-3.3,1.8c0,0,0,0-0.1,0 c-0.4-0.5-0.8-1-1.2-1.5S33.8,2,33.4,1.5c-0.5,0.4-1,0.9-1.5,1.3c-0.5,0.5-0.9,0.9-1.3,1.4c0,0,0,0-0.1,0C30,3.8,29.6,3.4,29.1,3 s-1-0.8-1.6-1.1c-0.8,1-1.6,2-2.2,3.1l0,0c-1.1-0.6-2.2-1.3-3.4-1.8c-0.6,1.2-1.1,2.3-1.6,3.5l0,0c-1.2-0.4-2.4-0.8-3.7-1.1 C16.3,6.7,16,8,15.8,9.2l0,0C14.5,9,13.3,8.9,12,8.9c-0.1,1.3-0.2,2.6-0.2,3.8l0,0c-1.3,0-2.5,0.1-3.8,0.3c0.1,1.3,0.3,2.6,0.6,3.8 l0,0C7.3,17.2,6,17.5,4.8,18c0.3,1.3,0.8,2.5,1.3,3.6l0,0c-1.2,0.5-2.3,1.1-3.4,1.7c0.6,1.2,1.2,2.3,2,3.3l0,0 c-1,0.7-2.1,1.5-3.1,2.4c0.8,1.1,1.7,2,2.5,2.9c-0.9,0.9-1.7,1.9-2.5,2.9c1,0.9,2.1,1.7,3.1,2.4l0,0c-0.7,1-1.3,2.1-2,3.3 c1.1,0.7,2.3,1.3,3.4,1.7l0,0c-0.5,1.1-0.9,2.4-1.3,3.6c1.2,0.4,2.5,0.8,3.7,1.1l0,0c-0.3,1.2-0.5,2.5-0.6,3.8 c1.3,0.2,2.6,0.3,3.8,0.3l0,0c0,1.3,0,2.5,0.2,3.8c1.3,0,2.6-0.2,3.8-0.4l0,0c0.2,1.2,0.5,2.5,0.9,3.7c1.3-0.3,2.5-0.7,3.7-1.1l0,0 c0.4,1.2,1,2.4,1.6,3.5c1.2-0.5,2.3-1.1,3.4-1.8l0,0c0.6,1.1,1.4,2.1,2.2,3.1c0.5-0.4,1.1-0.7,1.6-1.1c0.5-0.4,1-0.8,1.4-1.2 c0,0,0,0,0.1,0c0.4,0.5,0.8,0.9,1.3,1.4c0.5,0.4,0.9,0.9,1.5,1.3c0.5-0.5,0.9-0.9,1.3-1.4c0.4-0.5,0.8-1,1.2-1.5c0,0,0,0,0.1,0 c1,0.7,2.1,1.5,3.2,2.1c0.7-1.1,1.4-2.2,1.9-3.3l0,0c1.1,0.5,2.3,1.1,3.6,1.5c0.5-1.2,0.9-2.4,1.2-3.6l0,0c1.2,0.3,2.5,0.6,3.8,0.8 c0.3-1.3,0.4-2.6,0.5-3.8l0,0c1.3,0.1,2.5,0.1,3.8,0c0-1.3-0.1-2.6-0.2-3.8l0,0c1.2-0.1,2.5-0.4,3.8-0.7c-0.2-1.3-0.5-2.5-0.9-3.7 l0,0c1.2-0.4,2.4-0.8,3.6-1.4c-0.5-1.2-1-2.4-1.6-3.5l0,0C59.9,39.3,61,38.6,62.1,37.8z'/%3E%3Cg id='check'%3E%3Cg%3E%3Cpolygon fill='white' points='28.7,40.3 20.5,32.1 24.4,28.2 28.7,32.5 38.6,22.7 42.5,26.6 '/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.drag-and-drop {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    padding: 2em;
+    height: 100vh;
+    @media screen and (max-width: 640px) {
+        padding: 2em 0;
+    }
+
+    .card {
+        outline: 1px solid #e4e4e4;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        background: #e4e4e4;
+        min-height: $card-height;
+    }
+
+
+    .drag-and-drop-container {
+        align-items: center;    
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+    
+
+        .drag-wrapper {
+            position: relative;
+
+            .drag-item {
+                padding-bottom: .5em;
+                position: relative;
+            }
+        }
+        
+        .drop-container {
+            margin-bottom: .5em;
+        }
+        .drag-item > *,
+        .drop-container {
+            position: relative;
+            width: 100%;
+            border: 1px dashed white;
+            min-height: $card-height;
+        }
+    }
+    &:before {
+        @extend %check;
+        opacity: 0;
+    }
+    &.done {
+        position: relative;
+        &:before {
+            opacity: 1;
+            transition: opacity .35s ease;
+        }
+    }
+    // controls
+    .game-control {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        width: 100%;
+        min-width: $control-width;
+        height: $card-height;
+        text-align: center;
+        button {
+            border: none;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            width: $control-width;
+            height: $control-height;
+            background-color: black;
+            margin: auto;
+
+            &:disabled {
+                opacity: 0.2;
+                cursor: auto;
+            }
+            span {
+                background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 29.8 12.6' style='enable-background:new 0 0 29.8 12.6;' xml:space='preserve'%3E%3Cpath fill='%23666666' class='st0' d='M14.9,12.3c-0.3,0-0.6-0.1-0.9-0.3L0.8,2.7C0.1,2.3-0.1,1.3,0.4,0.6C0.9,0,1.8-0.2,2.5,0.3l12.4,8.7l12.4-8.7 C28-0.2,28.9,0,29.4,0.6c0.5,0.7,0.3,1.6-0.4,2.1L15.7,12C15.5,12.2,15.2,12.3,14.9,12.3z'/%3E%3C/svg%3E%0A");                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: inline-block;
+                height: 50%;
+                width: 50%;
+            }
+        }
+        &.control-prev {
+            top: -$card-height * .5;
+            button {
+                span {
+                    background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 29.8 12.6' style='enable-background:new 0 0 29.8 12.6;' xml:space='preserve'%3E%3Cpath fill='%23ffffff' d='M14.9,0c0.3,0,0.6,0.1,0.9,0.3L29,9.5c0.7,0.5,0.8,1.4,0.4,2.1c-0.5,0.7-1.4,0.8-2.1,0.4L14.9,3.3L2.5,12 c-0.7,0.5-1.6,0.3-2.1-0.4c-0.5-0.7-0.3-1.6,0.4-2.1L14,0.3C14.3,0.1,14.6,0,14.9,0z'/%3E%3C/svg%3E");
+                }
+            }
+        }
+        &.control-next {
+            bottom: 0;
+            bottom: -$card-height;
+        }
+    }
+}
