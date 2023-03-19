@@ -6,5 +6,5 @@ Drag and drop quiz game with geographical questions, implemented with React and 
 
 ## Live site
 
-[Homepage](https://seven-continents-quiz.netlify.app/)
+[Homepage](https://continents-quiz.netlify.app/)
 
