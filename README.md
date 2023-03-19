@@ -1,4 +1,4 @@
-![Screenshot of homepage](./dist/assets/images/screenshot.jpg "Screenshot of app")
+![Screenshot of homepage](./src/assets/images/screenshot.jpg "Screenshot of app")
 
 # 7 Continents – 7 Questions
 
