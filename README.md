@@ -1,10 +1,10 @@
-![Screenshot of homepage](./src/assets/images/screenshot.jpg "Screenshot of app")
+![Screenshot of quiz-game](./src/assets/images/screenshot.jpg "Screenshot of app")
 
 # 7 Continents – 7 Questions
 
 Drag and drop quiz game with geographical questions, implemented with React and Framer Motion in Typescript. 
 
-## Live site
+## Demo site
 
-[Homepage](https://continents-quiz.netlify.app/)
+[7 continents quiz game](https://continents-quiz.netlify.app/)
 
