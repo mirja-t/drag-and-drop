@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import './draganddrop.scss';
 import { motion, useMotionValue, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { DragItemTypes } from './types';
 
@@ -22,6 +21,7 @@ export function DragItem({ item, cardIndex, activeIndexes, dropConstraintsRef, d
     }
 
     function handleDragEnd(e: DragEvent) {  
+        if(!dropConstraintsRef.current) return;
 
         setIsDragging(false);
         // if only correct cards can be dropped:
@@ -34,7 +34,6 @@ export function DragItem({ item, cardIndex, activeIndexes, dropConstraintsRef, d
             eventTarget.getBoundingClientRect().left + eventTarget.offsetWidth / 2,
             eventTarget.getBoundingClientRect().top + eventTarget.offsetHeight / 2
         ];
-        if(!dropConstraintsRef.current) return;
         const currentEl: HTMLDivElement = dropConstraintsRef.current.find(el => {
                 const {left, top, right, bottom} = el.getBoundingClientRect();
                 return left < droppedElPosition[0] &&

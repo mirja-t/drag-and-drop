@@ -1,0 +1,5 @@
+{
+    "falseAnswersAllowed": true,
+    "validation": true,
+    "cardsPerRow": 6
+}
