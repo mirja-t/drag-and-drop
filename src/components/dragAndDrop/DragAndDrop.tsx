@@ -1,30 +1,32 @@
-import { useRef, useState, useMemo, useEffect } from 'react';
+import { useRef, useState, useMemo, useEffect, useContext } from 'react';
 import './draganddrop.scss';
 import { LayoutGroup, motion } from "framer-motion";
 import { DragItem, Card } from './DragItem';
 import { Validate } from './Validate';
 import { DragAndDropType, RefObj } from './types';
-
-
-const cardsPerRow = 5;
+import { UserContext } from '../../App';
 
 export function DragAndDrop({ items: {title, question, image, items}, goToNext }: DragAndDropType) {
     
+    const value = useContext(UserContext);
+    const { cardsPerRow, validation } = value;
+    const indexesMax = cardsPerRow ? Math.min(items.length - 1, cardsPerRow - 1) : items.length - 1;
+
     const dropConstraintsRef = useRef<HTMLDivElement[]>([]);
-    const containerRef = useRef(null);
     const dragWrapperRef: RefObj | null = useRef(null);
     const [cardsDropped, setCardsDropped] = useState(0);
     const targetCards = useMemo(() => items.filter(item => item.solution), [items]);
     const [dropPositions, setDropPositions] = useState(new Array(targetCards.length).fill(null));
-    const [indexes, setIndexes] = useState([0, cardsPerRow - 1]);
+    const [indexes, setIndexes] = useState([0, indexesMax]);
     const [dragWrapperHeight, setDragWrapperHeight] = useState('auto');
 
     useEffect(() => {
+        if(!cardsPerRow) return;
         setTimeout(() => {
             if(!dragWrapperRef || !dragWrapperRef.current) return;
             setDragWrapperHeight(dragWrapperRef.current.getBoundingClientRect().height + 'px');
         },500);
-    },[]);
+    },[cardsPerRow]);
 
     function setDropPosition(ref: HTMLDivElement | null, activeIndex: number) {
         setDropPositions(prev => [...prev].map((item, idx) => idx===activeIndex ? ref : item));
@@ -38,19 +40,18 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
     function resetQuestion() {
         setCardsDropped(0);
         setDropPositions(new Array(targetCards.length).fill(null));
-        setIndexes([0, cardsPerRow - 1]);
+        setIndexes([0, indexesMax]);
     }
 
     const control = (dir: number, disabled: boolean) => (<div className={`game-control control-${ dir > 0 ? 'next' : 'prev' }` } >
-        <button className="" onClick={() => slide(dir)} disabled={disabled}>
+        <button onClick={() => slide(dir)} disabled={disabled}>
             <span aria-hidden="true"/>
         </button>
     </div>);
 
     return (
     <div 
-        ref={containerRef}
-        className={"drag-and-drop"}
+        className="drag-and-drop"
         style={{
             backgroundImage: `url(${image})`
         }}>
@@ -68,7 +69,7 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
                     </motion.div>
                 ))}
                 </LayoutGroup>
-                 <Validate showButton={cardsDropped === targetCards.length} activeIndexes={dropPositions} items={items} resetQuestion={resetQuestion} goToNext={goToNext} />
+                { validation && <Validate showButton={cardsDropped === targetCards.length} activeIndexes={dropPositions} items={items} resetQuestion={resetQuestion} goToNext={goToNext} />}
             </div>
             
             <div ref={dragWrapperRef} 
@@ -76,7 +77,7 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
                 style={{
                     height: dragWrapperHeight
                 }}>
-                { control(-1, indexes[0] === 0) }
+                { cardsPerRow && items.length > cardsPerRow && control(-1, indexes[0] === 0) }
 
                 <LayoutGroup id="dragcontainer">
                 { items.map((item, idx) => (
@@ -91,7 +92,7 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
                 ))}
                 </LayoutGroup>
 
-                {  control(+1, indexes[1] === items.length - 1) }
+                { cardsPerRow && items.length > cardsPerRow && control(+1, indexes[1] === items.length - 1) }
             </div>
         </div>
     </div>)
