@@ -56,7 +56,6 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
         }}>
         <h1>{ title }</h1>
         <h5>{ question }</h5>
-        {/* className={cardsDropped===targetCards.length ? "drag-and-drop done" : "drag-and-drop"}> */}
 
         <div className="row drag-and-drop-container">
             <div className="col drop-wrapper">
@@ -72,7 +71,6 @@ export function DragAndDrop({ items: {title, question, image, items}, goToNext }
                  <Validate showButton={cardsDropped === targetCards.length} activeIndexes={dropPositions} items={items} resetQuestion={resetQuestion} goToNext={goToNext} />
             </div>
             
-            {/* { cardsDropped < targetCards.length && ( */}
             <div ref={dragWrapperRef} 
                 className="col drag-wrapper"
                 style={{
